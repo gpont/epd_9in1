@@ -2,7 +2,6 @@
 
 First and foremost, thank you! We appreciate that you want to contribute to epd_1in9, your time is valuable, and your contributions mean a lot to us.
 
-
 ## Important!
 
 By contributing to this project, you:
@@ -12,7 +11,6 @@ By contributing to this project, you:
 * Agree that you have received the necessary permissions from your employer to make the contributions (if applicable)
 * Agree that the content you contribute may be provided under the Project license(s)
 * Agree that, if you did not author 100% of the content, the appropriate licenses and copyrights have been added along with any other necessary attribution.
-
 
 ## Getting started
 
@@ -34,7 +32,6 @@ Don't have time to contribute? No worries, here are some other ways to show your
 
 - star the [project](https://github.com/gpont/epd_1in9.git)
 - tweet your support for epd_1in9
-
 
 ## Issues
 
@@ -72,7 +69,6 @@ Please be as descriptive as possible when creating an issue. Give us the informa
 - **error messages**: (required) please paste any error messages into the issue, or a [gist](https://gist.github.com/)
 - **extensions, plugins, helpers, etc** (if applicable): please list any extensions you're using
 
-
 ### Closing issues
 
 The original poster or the maintainers of epd_1in9 may close an issue at any time. Typically, but not exclusively, issues are closed when:
@@ -81,7 +77,6 @@ The original poster or the maintainers of epd_1in9 may close an issue at any tim
 - The project's maintainers have determined the issue is out of scope
 - An issue is clearly a duplicate of another issue, in which case the duplicate issue will be linked.
 - A discussion has clearly run its course
-
 
 ## Next steps
 
@@ -100,6 +95,5 @@ At the very least, please try to:
 
 - Use backticks to wrap code. This ensures that it retains its formatting and isn't modified when it's rendered by GitHub, and makes the code more readable to others
 - When applicable, use syntax highlighting by adding the correct language name after the first "code fence"
-
 
 [so]: http://stackoverflow.com/questions/tagged/epd_1in9
