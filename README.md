@@ -17,13 +17,50 @@
 
 ## Install
 
+Run command:
+
 ```sh
 pio pkg install -l "gpont/epd_9in1"
+```
+
+or
+
+On the env section of platformio.ini, add the following:
+
+```
+[env]
+lib_deps =
+  gpont/epd_9in1
+```
+Now the `EinkDisplay.h` is available to be included:
+
+```cpp
+#include "EinkDisplay.h"
 ```
 
 ## Usage
 
 You can use high level class [EinkDisplay.h](./include/EinkDisplay.h) or low level functions from [EPD_1in9.h](./include/EPD_1in9.h) if your need more manual control.
+
+Example usage:
+
+```cpp
+#include "EinkDisplay.h"
+
+EinkDisplay *display;
+
+void setup() {
+  display = new EinkDisplay();
+}
+
+void loop() {
+  display->setNumbers(123.4, 12.3);
+
+  display->loop();
+  delay(300); // For stable updating
+}
+
+```
 
 See also:
 - [examples](./examples) folder
