@@ -1,6 +1,8 @@
 <h1 align="center">Welcome to epd_1in9 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
+  <a href="https://registry.platformio.org/libraries/gpont/epd_1in9" target="_blank">
+    <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
+  </a>
   <a href="./docs/DOC.md" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -9,7 +11,7 @@
   </a>
 </p>
 
-![Module](./docs/e-paper-module.jpg)
+![Module](https://github.com/gpont/epd_9in1/tree/master/docs/e-paper-module.jpg)
 
 > EPD 1in9 eink display [waveshare](https://www.waveshare.com/product/displays/e-paper/1.9inch-segment-e-paper-module.htm) driver library for arduino.
 
@@ -27,7 +29,7 @@ or
 
 On the env section of platformio.ini, add the following:
 
-```
+```ini
 [env]
 lib_deps =
   gpont/epd_9in1
@@ -40,7 +42,7 @@ Now the `EinkDisplay.h` is available to be included:
 
 ## Usage
 
-You can use high level class [EinkDisplay.h](./include/EinkDisplay.h) or low level functions from [EPD_1in9.h](./include/EPD_1in9.h) if your need more manual control.
+You can use high level class [EinkDisplay.h](https://github.com/gpont/epd_9in1/tree/master/include/EinkDisplay.h) or low level functions from [EPD_1in9.h](https://github.com/gpont/epd_9in1/tree/master/include/EPD_1in9.h) if your need more manual control.
 
 Example usage:
 
@@ -63,8 +65,8 @@ void loop() {
 ```
 
 See also:
-- [examples](./examples) folder
-- [documentation](./docs/DOC.md)
+- [examples](https://github.com/gpont/epd_9in1/tree/master/examples) folder
+- [documentation](https://github.com/gpont/epd_9in1/tree/master/docs/DOC.md)
 
 ## Author
 

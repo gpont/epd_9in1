@@ -1,5 +1,21 @@
 {
+  "$schema": "https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/schema/library.json",
   "name": "EPD_1in9",
+  "version": "0.0.1",
+  "description": "EPD 9in1 - eink waveshare display driver library",
+  "keywords": ["epd", "9in1", "waveshare", "eink", "display"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gpont/epd_9in1.git"
+  },
+  "authors": {
+    "name": "Evgenii Guzhikhin",
+    "email": "gpont97@gmain.com",
+    "url": "https://www.linkedin.com/in/евгений-гужихин-274021155/"
+  },
+  "license": "MIT",
+  "frameworks": ["arduino"],
+  "platforms": ["esp32"],
   "build": {
     "srcDir": "./src",
     "includeDir": "./include"
