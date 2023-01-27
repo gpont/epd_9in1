@@ -24,8 +24,8 @@ Ready? Great! Please provide the following details:
 
 Please decribe the bug, along with:
 
-- [ ] Expected behavior and actual behavior.
-- [ ] Steps to reproduce the problem.
+- Expected behavior and actual behavior.
+- Steps to reproduce the problem.
 
 [description]
 

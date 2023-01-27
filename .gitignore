@@ -1,6 +1,7 @@
 # Platform IO
 .pio
 platform.ini
+*.tar.gz
 
 # VSCode
 .vscode/*

@@ -23,7 +23,7 @@ Ready? Great! Please provide the following details:
 
 Please decribe the feature, along with:
 
-- [ ] What is should be done?
-- [ ] Why is it should be done?
+- What is should be done?
+- Why is it should be done?
 
 [description]

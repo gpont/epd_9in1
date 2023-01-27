@@ -1,6 +1,6 @@
 # Documentation
 
-![pixels-spec](./docs/pixels-spec.jpg)
+![pixels-spec](./pixels-spec.jpg)
 
 ## Specification and links
 

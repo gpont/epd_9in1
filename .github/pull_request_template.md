@@ -4,6 +4,8 @@
 - [ ] Have you read the [Contributing Guide](../CONTRIBUTING.md)?
 - [ ] Have you reviewed the project readme (you might find advice about creating new issues)?
 - [ ] Are you creating an issue in the correct repository? (if this related to a dependency, please create the issue on that repository)
+- [ ] Are you updated version in library.json?
+- [ ] Are you updated verions in README.md badge?
 
 Ready? Great! Please provide the following details:
 
@@ -15,7 +17,7 @@ Ready? Great! Please provide the following details:
 
 Please decribe the feature, along with:
 
-- [ ] What is done?
-- [ ] Why is it done?
+- What is done?
+- Why is it done?
 
 [description]
