@@ -1,0 +1,7 @@
+{
+  "name": "EPD_1in9",
+  "build": {
+    "srcDir": "./src",
+    "includeDir": "./include"
+  }
+}
