@@ -4,33 +4,33 @@ about: Create a report to help us improve
 title: ''
 labels: bug
 assignees: gpont
-
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+## Prerequisites
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+- [ ] Have you searched for existing issues (open and close) to see if the bug or feature request has already been reported?
+- [ ] Are you running the latest version of {%= ask("name") %}? If not, please update to the latest version and verify that the issue still occurs before proceding.
+- [ ] Have you read the [Contributing Guide](../CONTRIBUTING.md)?
+- [ ] Have you reviewed the project readme (you might find advice about creating new issues)?
+- [ ] Are you creating an issue in the correct repository? (if this related to a dependency, please create the issue on that repository)
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+Ready? Great! Please provide the following details:
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## Version
 
-**Desktop (please complete the following information):**
- - OS: [e.g. MacOS]
- - Version [e.g. Ventura 13.0.1]
+[version]
 
-**Microcontroller (please complete the following information):**
- - Device: [e.g. Arduino Uno]
- - Modules: [if necessary]
- - Libs [e.g. Wire.h]
+## Description
 
-**Additional context**
-Add any other context about the problem here.
+Please decribe the bug, along with:
+
+- [ ] Expected behavior and actual behavior.
+- [ ] Steps to reproduce the problem.
+
+[description]
+
+## Error message
+
+```sh
+# please paste any error messages here
+```

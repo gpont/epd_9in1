@@ -1,3 +1,11 @@
+---
+name: Feature request
+about: Create a feature request to help us improve
+title: ''
+labels: feature
+assignees: gpont
+---
+
 ## Prerequisites
 
 - [ ] Have you searched for existing issues (open and close) to see if the bug or feature request has already been reported?
