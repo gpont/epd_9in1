@@ -2,9 +2,12 @@ name: Release Library
 on:
   pull_request:
     branches: [master]
+    types: [closed]
 
 jobs:
   release-lib:
+    if: ${{ github.event.pull_request.merged }}
+    name: "Release library"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -17,10 +20,11 @@ jobs:
         run: |
           export PLATFORMIO_AUTH_TOKEN=${{ secrets.PLATFORMIO_TOKEN }}
           pio pkg publish --owner gpont --type library --non-interactive
-        with:
-          token: ${{ secrets.PLATFORMIO_TOKEN }}
 
   release-binary:
+    if: ${{ github.event.pull_request.merged }}
+    permissions: write-all
+    name: "Release binary"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -33,10 +37,11 @@ jobs:
         run: pio pkg pack
 
       - name: Upload binaries to release
-        uses: svenstaro/upload-release-action@v1-release
+        uses: marvinpinto/action-automatic-releases@latest
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: EPD_1in9-*.tar.gz
-          tag: ${{ github.ref }}
-          overwrite: true
-          file_glob: true
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "Release"
+          files: |
+            *.tar.gz
