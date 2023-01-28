@@ -2,11 +2,11 @@ name: Release Library
 on:
   pull_request:
     branches: [master]
-    # types: [closed]
+    types: [closed]
 
 jobs:
   release-lib:
-    # if: ${{ github.event.pull_request.merged }}
+    if: ${{ github.event.pull_request.merged }}
     name: "Release library"
     runs-on: ubuntu-latest
     steps:
@@ -22,7 +22,7 @@ jobs:
           pio pkg publish --owner gpont --type library --non-interactive
 
   release-binary:
-    # if: ${{ github.event.pull_request.merged }}
+    if: ${{ github.event.pull_request.merged }}
     permissions: write-all
     name: "Release binary"
     runs-on: ubuntu-latest
