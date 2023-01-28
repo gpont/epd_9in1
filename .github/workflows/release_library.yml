@@ -17,8 +17,6 @@ jobs:
         run: |
           export PLATFORMIO_AUTH_TOKEN=${{ secrets.PLATFORMIO_TOKEN }}
           pio pkg publish --owner gpont --type library --non-interactive
-        with:
-          token: ${{ secrets.PLATFORMIO_TOKEN }}
 
   release-binary:
     runs-on: ubuntu-latest

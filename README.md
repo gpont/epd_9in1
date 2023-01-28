@@ -9,6 +9,9 @@
   <a href="./LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
+  <a href="https://www.paypal.me/jsheroru/100">
+    <img alt="Paypal" src="https://img.shields.io/badge/$-donate-ff69b4.svg?maxAge=2592000&amp;style=flat">
+  </a>
 </p>
 
 ![Module](https://github.com/gpont/epd_9in1/tree/master/docs/e-paper-module.jpg)
@@ -17,7 +20,16 @@
 
 ### 🏠 [Homepage](https://registry.platformio.org/tools/gpont/epd_1in9)
 
-## Install
+## Table of Contents
+- [Table of Contents](#table-of-contents)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Author](#author)
+- [Contributing](#contributing)
+- [Show your support](#show-your-support)
+- [License](#license)
+
+## Installation
 
 Run command:
 
@@ -65,8 +77,8 @@ void loop() {
 ```
 
 See also:
-- [examples](https://github.com/gpont/epd_9in1/tree/master/examples) folder
-- [documentation](https://github.com/gpont/epd_9in1/tree/master/docs/DOC.md)
+- [Examples](https://github.com/gpont/epd_9in1/tree/master/examples) folder
+- [Documentation](https://github.com/gpont/epd_9in1/tree/master/docs/DOC.md)
 
 ## Author
 
@@ -76,15 +88,17 @@ See also:
 * Github: [@gpont](https://github.com/gpont)
 * LinkedIn: [@евгений-гужихин-274021155](https://linkedin.com/in/евгений-гужихин-274021155)
 
-## 🤝 Contributing
+## Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/gpont/epd_9in1/issues). You can also take a look at the [contributing guide](CONTRIBUTING.md).
+🤝 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/gpont/epd_9in1/issues). You can also take a look at the [contributing guide](CONTRIBUTING.md).
 
 ## Show your support
 
 Give a ⭐️ if this project helped you!
 
-## 📝 License
+[![paypal](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.me/jsheroru/100)
 
-Copyright © 2023 [Evgenii Guzhikhin](https://github.com/gpont).<br />
+## License
+
+📝 Copyright © 2023 [Evgenii Guzhikhin](https://github.com/gpont).<br />
 This project is [MIT](./LICENSE) licensed.
