@@ -14,7 +14,7 @@
   </a>
 </p>
 
-![Module](https://github.com/gpont/epd_9in1/tree/master/docs/e-paper-module.jpg)
+![Module](https://raw.githubusercontent.com/gpont/epd_9in1/master/docs/e-paper-module.jpg)
 
 > EPD 1in9 eink display [waveshare](https://www.waveshare.com/product/displays/e-paper/1.9inch-segment-e-paper-module.htm) driver library for arduino.
 
