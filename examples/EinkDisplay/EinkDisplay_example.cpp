@@ -6,7 +6,7 @@ EinkDisplay *display;
 
 void setup()
 {
-  display = new EinkDisplay();
+  display = new EinkDisplay(CELSIUS);
 }
 
 void loop()
@@ -15,6 +15,8 @@ void loop()
       123.4,
       12.3);
 
+  display->setLowPowerIndicator(true);
+
   display->loop();
-  delay(500);
+  delay(300); // For stable updating
 }

@@ -1,34 +1,38 @@
-#include <math.h>
 #include <Wire.h>
 #include "EinkDisplay.h"
 
-EinkDisplay::EinkDisplay() : image{
-                                 0x00,
-                                 0x00,
-                                 0x00,
-                                 0x00,
-                                 0x00,
-                                 0x00,
-                                 0x00,
-                                 0x00,
-                                 0x00,
-                                 0x00,
-                                 0x00,
-                                 0x00,
-                                 0x00, // TODO
-                                 0x05, // С°
-                                 0x00}
+#include "utils.cpp"
+
+EinkDisplay::EinkDisplay(uint16_t degreesType = CELSIUS)
+    : image{
+          0x00,
+          0x00,
+          0x00,
+          0x00,
+          0x00,
+          0x00,
+          0x00,
+          0x00,
+          0x00,
+          0x00,
+          0x00,
+          0x00,
+          0x00,
+          0x05, // С°/F°
+          0x00}
 {
   Serial.begin(115200);
   Wire.begin();
+
+  image[13] = degreesType;
+
   GPIOInit();
   EPD_1in9_init();
 
   // Clear screen
-  EPD_1in9_lut_5S();
+  EPD_1in9_lut_DU_WB();
   EPD_1in9_Write_Screen(DSPNUM_1in9_off);
   delay(500);
-  EPD_1in9_lut_GC();
 }
 
 void EinkDisplay::loop()
@@ -54,39 +58,6 @@ void EinkDisplay::setData(unsigned char new_image[IMAGE_SIZE])
   }
 }
 
-unsigned char getPixel(int number, int order)
-{
-  return number == -1 ? EMPTY : DIGITS[number][order];
-}
-
-boolean isNaN(float a)
-{
-  return a != a;
-}
-
-int *parseNumber(float number, int digitsCount)
-{
-  int *digits = new int[digitsCount];
-  for (int i = 0; i < digitsCount; i++)
-  {
-    if (isNaN(number))
-    {
-      digits[i] = -1;
-    }
-    else
-    {
-      digits[i] = (int)(number / pow(10, (digitsCount - i) - 2)) % 10;
-
-      if (digits[i] == 0 && (i == 0 || digits[i - 1] == -1))
-      {
-        digits[i] = -1;
-      }
-    }
-  }
-
-  return digits;
-}
-
 void EinkDisplay::setNumbers(float first, float second)
 {
   int *digitsParsedFirst = parseNumber(first, 4);
@@ -107,13 +78,22 @@ void EinkDisplay::setNumbers(float first, float second)
       getPixel(digitsParsedFirst[3], 0),
       getPixel(digitsParsedFirst[3], 1),
       image[12],
-      image[13], // С°
+      image[13], // С°/F°
       image[14]};
+
+  new_image[4] |= 0b0000000000100000;  // set top dot
+  new_image[8] |= 0b0000000000100000;  // set bottom dot
+  new_image[10] |= 0b0000000000100000; // set percent symbol
 
   setData(new_image);
 
   delete[] digitsParsedFirst;
   delete[] digitsParsedSecond;
+}
+
+void EinkDisplay::setLowPowerIndicator(bool isLowPower)
+{
+  image[13] |= isLowPower ? 0b0000000000010000 : 0b1111111111101111;
 }
 
 EinkDisplay::~EinkDisplay()
