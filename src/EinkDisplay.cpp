@@ -3,7 +3,7 @@
 
 #include "utils.cpp"
 
-EinkDisplay::EinkDisplay(uint16_t degreesType)
+EinkDisplay::EinkDisplay(unsigned char degreesTypeInit)
     : image{
           0x00,
           0x00,
@@ -18,27 +18,30 @@ EinkDisplay::EinkDisplay(uint16_t degreesType)
           0x00,
           0x00,
           0x00,
-          0x05, // С°/F°
+          0x00,
           0x00}
 {
   Serial.begin(115200);
   Wire.begin();
 
+  degreesType = degreesTypeInit;
   image[13] = degreesType;
 
   GPIOInit();
   EPD_1in9_init();
 
-  // Clear screen
+  // Set type of updating
   EPD_1in9_lut_DU_WB();
+
+  // Clear screen
   EPD_1in9_Write_Screen(DSPNUM_9in1_off);
-  delay(500);
 }
 
 void EinkDisplay::loop()
 {
   if (needUpdate)
   {
+    EPD_1in9_lut_DU_WB();
     delay(300);
     EPD_1in9_Write_Screen(image);
 
@@ -77,13 +80,12 @@ void EinkDisplay::setNumbers(float first, float second)
       getPixel(digitsParsedSecond[2], 1),
       getPixel(digitsParsedFirst[3], 0),
       getPixel(digitsParsedFirst[3], 1),
-      image[12],
-      image[13], // С°/F°
+      degreesType, // С°/F°/power/bluetooth
       image[14]};
 
-  new_image[4] |= 0b0000000000100000;  // set top dot
-  new_image[8] |= 0b0000000000100000;  // set bottom dot
-  new_image[10] |= 0b0000000000100000; // set percent symbol
+  new_image[4] |= DOT;      // set top dot
+  new_image[8] |= DOT;      // set bottom dot
+  new_image[10] |= PERCENT; // set percent symbol
 
   setData(new_image);
 
@@ -93,7 +95,14 @@ void EinkDisplay::setNumbers(float first, float second)
 
 void EinkDisplay::setLowPowerIndicator(bool isLowPower)
 {
-  image[13] |= isLowPower ? 0b0000000000010000 : 0b1111111111101111;
+  if (isLowPower)
+  {
+    degreesType |= LOW_POWER_ON;
+  }
+  else
+  {
+    degreesType &= LOW_POWER_OFF;
+  }
 }
 
 EinkDisplay::~EinkDisplay()

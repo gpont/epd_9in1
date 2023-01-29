@@ -1,7 +1,7 @@
 <h1 align="center">Welcome to epd_1in9 👋</h1>
 <p>
   <a href="https://registry.platformio.org/libraries/gpont/epd_1in9" target="_blank">
-    <img alt="Version" src="https://img.shields.io/badge/version-0.1.1-blue.svg?cacheSeconds=2592000" />
+    <img alt="Version" src="https://img.shields.io/badge/version-0.2.0-blue.svg?cacheSeconds=2592000" />
   </a>
   <a href="./docs/DOC.md" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
