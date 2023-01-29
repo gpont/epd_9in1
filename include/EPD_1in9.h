@@ -1,5 +1,5 @@
-#ifndef _EPD_1in9_H_
-#define _EPD_1in9_H_
+#ifndef EPD_1in9_h
+#define EPD_1in9_h
 
 #include <Arduino.h>
 #include <Wire.h>
@@ -10,7 +10,7 @@
 
 extern unsigned char DSPNUM_9in1_off[];
 
-void GPIOInit(void);
+void GPIOInit(uint8_t BUSY_PIN = 7, uint8_t RST_PIN = 8);
 void EPD_1in9_Reset(void);
 void EPD_1in9_SendCommand(unsigned char Reg);
 void EPD_1in9_SendData(unsigned char Data);
@@ -22,7 +22,7 @@ void EPD_1in9_lut_GC(void);
 void EPD_1in9_lut_5S(void);
 void EPD_1in9_Temperature(void);
 void EPD_1in9_init(void);
-void EPD_1in9_Write_Screen(unsigned char *image);
+void EPD_1in9_Write_Screen(unsigned char *image, bool isInvertedColors = false);
 void EPD_1in9_sleep(void);
 
 #endif

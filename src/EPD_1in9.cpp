@@ -6,7 +6,7 @@ uint8_t VAR_Temperature = 20;
 uint8_t EPD_BUSY_PIN = 7;
 uint8_t EPD_RST_PIN = 8;
 
-unsigned char DSPNUM_1in9_off[] = {
+unsigned char DSPNUM_9in1_off[] = {
     0x00,
     0x00,
     0x00,
@@ -27,7 +27,7 @@ unsigned char DSPNUM_1in9_off[] = {
 /**
  * GPIO Init
  **/
-void GPIOInit(uint8_t BUSY_PIN = 7, uint8_t RST_PIN = 8)
+void GPIOInit(uint8_t BUSY_PIN, uint8_t RST_PIN)
 {
   EPD_BUSY_PIN = BUSY_PIN;
   EPD_RST_PIN = RST_PIN;
@@ -237,7 +237,7 @@ void EPD_1in9_init(void)
   EPD_1in9_Temperature();
 }
 
-void EPD_1in9_Write_Screen(unsigned char *image, int isInvertedColors = 0)
+void EPD_1in9_Write_Screen(unsigned char *image, bool isInvertedColors)
 {
   Wire.beginTransmission(adds_com);
   Wire.write(0xAC); // Close the sleep

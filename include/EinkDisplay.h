@@ -6,20 +6,24 @@
 
 #define CELSIUS 0x05
 #define FAHRENHEIT 0x06
+#define DOT 0b0000000000100000
+#define PERCENT 0b0000000000100000
+#define LOW_POWER_ON 0b0000000000010000
+#define LOW_POWER_OFF 0b1111111111101111
 
 class EinkDisplay
 {
   bool needUpdate = false;
-  uint16_t degreesType = CELSIUS;
+  unsigned char degreesType = CELSIUS;
   unsigned char image[IMAGE_SIZE];
 
-  void setData(unsigned char new_image[]);
+  void setData(unsigned char new_image[IMAGE_SIZE]);
 
 public:
   /**
    * @param degreesType CELSIUS || FAHRENHEIT
    */
-  EinkDisplay(uint16_t degreesType = CELSIUS);
+  EinkDisplay(unsigned char degreesTypeInit = CELSIUS);
   ~EinkDisplay();
   virtual void loop();
 
