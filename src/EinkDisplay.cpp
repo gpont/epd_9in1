@@ -3,7 +3,7 @@
 
 #include "utils.cpp"
 
-EinkDisplay::EinkDisplay(uint16_t degreesType = CELSIUS)
+EinkDisplay::EinkDisplay(uint16_t degreesType)
     : image{
           0x00,
           0x00,
@@ -31,7 +31,7 @@ EinkDisplay::EinkDisplay(uint16_t degreesType = CELSIUS)
 
   // Clear screen
   EPD_1in9_lut_DU_WB();
-  EPD_1in9_Write_Screen(DSPNUM_1in9_off);
+  EPD_1in9_Write_Screen(DSPNUM_9in1_off);
   delay(500);
 }
 
