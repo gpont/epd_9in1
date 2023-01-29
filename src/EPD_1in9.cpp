@@ -2,25 +2,10 @@
 #include <stdlib.h>
 #include "EPD_1in9.h"
 
-//////////////////////////////////////full screen update LUT////////////////////////////////////////////
+uint8_t VAR_Temperature = 20;
+uint8_t EPD_BUSY_PIN = 7;
+uint8_t EPD_RST_PIN = 8;
 
-unsigned char DSPNUM_1in9_on[] = {
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-    0xff,
-}; // all black
 unsigned char DSPNUM_1in9_off[] = {
     0x00,
     0x00,
@@ -37,211 +22,22 @@ unsigned char DSPNUM_1in9_off[] = {
     0x00,
     0x00,
     0x00,
-}; // all white
-unsigned char DSPNUM_1in9_WB[] = {
-    0xFF,
-    0xFF,
-    0xFF,
-    0xFF,
-    0xFF,
-    0xFF,
-    0xFF,
-    0xFF,
-    0xFF,
-    0xFF,
-    0xFF,
-    0xFF,
-    0xFF,
-    0xFF,
-    0xFF,
-}; // All black font
-unsigned char DSPNUM_1in9_W0[] = {
-    0x00,
-    0xbf,
-    0x1f,
-    0xbf,
-    0x1f,
-    0xbf,
-    0x1f,
-    0xbf,
-    0x1f,
-    0xbf,
-    0x1f,
-    0xbf,
-    0x1f,
-    0x00,
-    0x00,
-}; // 0
-unsigned char DSPNUM_1in9_W1[] = {
-    0xff,
-    0x1f,
-    0x00,
-    0x1f,
-    0x00,
-    0x1f,
-    0x00,
-    0x1f,
-    0x00,
-    0x1f,
-    0x00,
-    0x1f,
-    0x00,
-    0x00,
-    0x00,
-}; // 1
-unsigned char DSPNUM_1in9_W2[] = {
-    0x00,
-    0xfd,
-    0x17,
-    0xfd,
-    0x17,
-    0xfd,
-    0x17,
-    0xfd,
-    0x17,
-    0xfd,
-    0x17,
-    0xfd,
-    0x37,
-    0x00,
-    0x00,
-}; // 2
-unsigned char DSPNUM_1in9_W3[] = {
-    0x00,
-    0xf5,
-    0x1f,
-    0xf5,
-    0x1f,
-    0xf5,
-    0x1f,
-    0xf5,
-    0x1f,
-    0xf5,
-    0x1f,
-    0xf5,
-    0x1f,
-    0x00,
-    0x00,
-}; // 3
-unsigned char DSPNUM_1in9_W4[] = {
-    0x00,
-    0x47,
-    0x1f,
-    0x47,
-    0x1f,
-    0x47,
-    0x1f,
-    0x47,
-    0x1f,
-    0x47,
-    0x1f,
-    0x47,
-    0x3f,
-    0x00,
-    0x00,
-}; // 4
-unsigned char DSPNUM_1in9_W5[] = {
-    0x00,
-    0xf7,
-    0x1d,
-    0xf7,
-    0x1d,
-    0xf7,
-    0x1d,
-    0xf7,
-    0x1d,
-    0xf7,
-    0x1d,
-    0xf7,
-    0x1d,
-    0x00,
-    0x00,
-}; // 5
-unsigned char DSPNUM_1in9_W6[] = {
-    0x00,
-    0xff,
-    0x1d,
-    0xff,
-    0x1d,
-    0xff,
-    0x1d,
-    0xff,
-    0x1d,
-    0xff,
-    0x1d,
-    0xff,
-    0x3d,
-    0x00,
-    0x00,
-}; // 6
-unsigned char DSPNUM_1in9_W7[] = {
-    0x00,
-    0x21,
-    0x1f,
-    0x21,
-    0x1f,
-    0x21,
-    0x1f,
-    0x21,
-    0x1f,
-    0x21,
-    0x1f,
-    0x21,
-    0x1f,
-    0x00,
-    0x00,
-}; // 7
-unsigned char DSPNUM_1in9_W8[] = {
-    0x00,
-    0xff,
-    0x1f,
-    0xff,
-    0x1f,
-    0xff,
-    0x1f,
-    0xff,
-    0x1f,
-    0xff,
-    0x1f,
-    0xff,
-    0x3f,
-    0x00,
-    0x00,
-}; // 8
-unsigned char DSPNUM_1in9_W9[] = {
-    0x00,
-    0xf7,
-    0x1f,
-    0xf7,
-    0x1f,
-    0xf7,
-    0x1f,
-    0xf7,
-    0x1f,
-    0xf7,
-    0x1f,
-    0xf7,
-    0x1f,
-    0x00,
-    0x00,
-}; // 9
+};
 
-unsigned char VAR_Temperature = 20;
-
-/******************************************************************************
-function :	GPIO Init
-parameter:
-******************************************************************************/
-void GPIOInit(void)
+/**
+ * GPIO Init
+ **/
+void GPIOInit(uint8_t BUSY_PIN = 7, uint8_t RST_PIN = 8)
 {
+  EPD_BUSY_PIN = BUSY_PIN;
+  EPD_RST_PIN = RST_PIN;
   pinMode(EPD_BUSY_PIN, INPUT);
   pinMode(EPD_RST_PIN, OUTPUT);
 }
 
-/******************************************************************************
-function :	Software reset
-parameter:
-******************************************************************************/
+/**
+ * Software reset
+ **/
 void EPD_1in9_Reset(void)
 {
   digitalWrite(EPD_RST_PIN, 1);
@@ -252,11 +48,10 @@ void EPD_1in9_Reset(void)
   delay(200);
 }
 
-/******************************************************************************
-function :	send command
-parameter:
-     Reg : Command register
-******************************************************************************/
+/**
+ * Send command
+ * @param Reg Command register
+ **/
 void EPD_1in9_SendCommand(unsigned char Reg)
 {
   Wire.beginTransmission(adds_com);
@@ -264,11 +59,10 @@ void EPD_1in9_SendCommand(unsigned char Reg)
   Wire.endTransmission(false);
 }
 
-/******************************************************************************
-function :	send data
-parameter:
-    Data : Write data
-******************************************************************************/
+/**
+ * Send data
+ * @param Data Write data
+ **/
 void EPD_1in9_SendData(unsigned char Data)
 {
   Wire.beginTransmission(adds_data);
@@ -276,11 +70,10 @@ void EPD_1in9_SendData(unsigned char Data)
   Wire.endTransmission();
 }
 
-/******************************************************************************
-function :	read command
-parameter:
-     Reg : Command register
-******************************************************************************/
+/**
+ * Read command
+ * @param Reg Command register
+ **/
 unsigned char EPD_1in9_readCommand(unsigned char Reg)
 {
   unsigned char a;
@@ -292,11 +85,10 @@ unsigned char EPD_1in9_readCommand(unsigned char Reg)
   return a;
 }
 
-/******************************************************************************
-function :	read data
-parameter:
-    Data : Write data
-******************************************************************************/
+/**
+ * Read data
+ * @param Data Write data
+ **/
 unsigned char EPD_1in9_readData(unsigned char Data)
 {
   unsigned char a;
@@ -308,10 +100,9 @@ unsigned char EPD_1in9_readData(unsigned char Data)
   return a;
 }
 
-/******************************************************************************
-function :	Wait until the busy_pin goes LOW
-parameter:
-******************************************************************************/
+/**
+ * Wait until the busy_pin goes LOW
+ **/
 void EPD_1in9_ReadBusy(void)
 {
   Serial.println("e-Paper busy");
@@ -326,10 +117,11 @@ void EPD_1in9_ReadBusy(void)
   Serial.println("e-Paper busy release");
 }
 
-/*
-# DU waveform white extinction diagram + black out diagram
-# Bureau of brush waveform
-*/
+/**
+ * Set DU WB type of updating
+ * DU waveform white extinction diagram + black out diagram
+ * Bureau of brush waveform
+ **/
 void EPD_1in9_lut_DU_WB(void)
 {
   Wire.beginTransmission(adds_com);
@@ -343,10 +135,11 @@ void EPD_1in9_lut_DU_WB(void)
   Wire.endTransmission();
 }
 
-/*
-# GC waveform
-# The brush waveform
-*/
+/**
+ * Set GC type of updating
+ * GC waveform
+ * The brush waveform
+ **/
 void EPD_1in9_lut_GC(void)
 {
   Wire.beginTransmission(adds_com);
@@ -360,10 +153,11 @@ void EPD_1in9_lut_GC(void)
   Wire.endTransmission();
 }
 
-/*
-# 5 waveform  better ghosting
-# Boot waveform
-*/
+/**
+ * Set 5S type of updating
+ * 5 waveform  better ghosting
+ * Boot waveform
+ **/
 void EPD_1in9_lut_5S(void)
 {
   Wire.beginTransmission(adds_com);
@@ -377,11 +171,11 @@ void EPD_1in9_lut_5S(void)
   Wire.endTransmission();
 }
 
-/*
-# temperature measurement
-# You are advised to periodically measure the temperature and modify the driver parameters
-# If an external temperature sensor is available, use an external temperature sensor
-*/
+/**
+ * Temperature measurement
+ * You are advised to periodically measure the temperature and modify the driver parameters
+ * If an external temperature sensor is available, use an external temperature sensor
+ **/
 void EPD_1in9_Temperature(void)
 {
   Wire.beginTransmission(adds_com);
@@ -418,10 +212,10 @@ void EPD_1in9_Temperature(void)
   Wire.endTransmission();
 }
 
-/*
-# Note that the size and frame rate of V0 need to be set during initialization,
-# otherwise the local brush will not be displayed
-*/
+/**
+ * Note that the size and frame rate of V0 need to be set during initialization,
+ * otherwise the local brush will not be displayed
+ **/
 void EPD_1in9_init(void)
 {
   EPD_1in9_Reset();
@@ -443,7 +237,7 @@ void EPD_1in9_init(void)
   EPD_1in9_Temperature();
 }
 
-void EPD_1in9_Write_Screen(unsigned char *image)
+void EPD_1in9_Write_Screen(unsigned char *image, int isInvertedColors = 0)
 {
   Wire.beginTransmission(adds_com);
   Wire.write(0xAC); // Close the sleep
@@ -457,40 +251,7 @@ void EPD_1in9_Write_Screen(unsigned char *image)
   for (unsigned char j = 0; j < 15; j++)
     Wire.write(image[j]);
 
-  Wire.write(0x00);
-  Wire.endTransmission();
-
-  Wire.beginTransmission(adds_com);
-  Wire.write(0xAB); // Turn on the second SRAM
-  Wire.write(0xAA); // Shut down the second SRAM
-  Wire.write(0xAF); // display on
-  Wire.endTransmission();
-
-  EPD_1in9_ReadBusy();
-  // delay(2000);
-
-  Wire.beginTransmission(adds_com);
-  Wire.write(0xAE); // display off
-  Wire.write(0x28); // HV OFF
-  Wire.write(0xAD); // sleep in
-  Wire.endTransmission();
-}
-
-void EPD_1in9_Write_Screen1(unsigned char *image)
-{
-  Wire.beginTransmission(adds_com);
-  Wire.write(0xAC); // Close the sleep
-  Wire.write(0x2B); // turn on the power
-  Wire.write(0x40); // Write RAM address
-  Wire.write(0xA9); // Turn on the first SRAM
-  Wire.write(0xA8); // Shut down the first SRAM
-  Wire.endTransmission();
-
-  Wire.beginTransmission(adds_data);
-  for (unsigned char j = 0; j < 15; j++)
-    Wire.write(image[j]);
-
-  Wire.write(0x03);
+  Wire.write(isInvertedColors ? 0x03 : 0x00);
   Wire.endTransmission();
 
   Wire.beginTransmission(adds_com);

@@ -8,22 +8,7 @@
 #define adds_com 0x3C
 #define adds_data 0x3D
 
-#define EPD_BUSY_PIN 7
-#define EPD_RST_PIN 8
-
-extern unsigned char DSPNUM_1in9_on[];
-extern unsigned char DSPNUM_1in9_off[];
-extern unsigned char DSPNUM_1in9_WB[];
-extern unsigned char DSPNUM_1in9_W0[];
-extern unsigned char DSPNUM_1in9_W1[];
-extern unsigned char DSPNUM_1in9_W2[];
-extern unsigned char DSPNUM_1in9_W3[];
-extern unsigned char DSPNUM_1in9_W4[];
-extern unsigned char DSPNUM_1in9_W5[];
-extern unsigned char DSPNUM_1in9_W6[];
-extern unsigned char DSPNUM_1in9_W7[];
-extern unsigned char DSPNUM_1in9_W8[];
-extern unsigned char DSPNUM_1in9_W9[];
+extern unsigned char DSPNUM_9in1_off[];
 
 void GPIOInit(void);
 void EPD_1in9_Reset(void);
@@ -38,7 +23,6 @@ void EPD_1in9_lut_5S(void);
 void EPD_1in9_Temperature(void);
 void EPD_1in9_init(void);
 void EPD_1in9_Write_Screen(unsigned char *image);
-void EPD_1in9_Write_Screen1(unsigned char *image);
 void EPD_1in9_sleep(void);
 
 #endif
